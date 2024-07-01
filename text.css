@@ -1,0 +1,60 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600;700;800&display=swap');
+
+/* --------------Modal-------*/
+.modal-title {
+    margin-left: 115px;
+    color: black;
+    font-weight: 700;
+    font-size: 18px;
+}
+
+.modal-body {
+    color: black;
+    font-size: 15px;
+}
+
+.btn-secondary {
+    background-color: #fb0101; /* Màu nền */
+    color: white; /* Màu chữ */
+    border-color: #fb0101; /* Màu viền */
+}
+
+.btn-secondary:hover {
+    background-color: #0056b3; /* Màu nền khi hover */
+    border-color: #0056b3; /* Màu viền khi hover */
+}
+
+.modal-footer{
+        margin-top: -23px;
+}
+/* Xử lý khi phân công  */
+
+	.daphancong {
+		text-align: center;
+		font-weight: 600;
+		background: lightgray;
+	}
+
+	.daduyetHD {
+		background: lightseagreen;
+		text-align: center;
+		font-weight: 600;
+	}
+
+	.phancong {
+		background: lightcoral;
+		text-align: center;
+		font-weight: 600;
+	}
+    /* .table th, .table td{
+
+        white-space: normal !important;
+    } */
+
+.nut{
+
+    display: flex;
+    gap: 2px;
+    font-size: 20px;
+}
+
