@@ -11,7 +11,19 @@ $row = mysqli_fetch_array($kq);
 ?>
 
 <head>
-    <script src="ckeditor/ckeditor.js"></script>
+    <script src="ckeditor/ckeditor.js">
+
+ CKEDITOR.replace('editor1', {
+    entities: false,  // Tắt chuyển đổi ký tự đặc biệt thành các ký tự HTML entity
+    basicEntities: false,  // Tắt chuyển đổi cơ bản các ký tự thành entity
+    entities_latin: false,  // Không chuyển đổi các ký tự Latin thành entity
+    entities_greek: false,  // Không chuyển đổi các ký tự Greek thành entity
+    
+});
+
+
+
+    </script>
 
 </head>
 <form enctype="multipart/form-data" action="thuchien_sua_tintuc.php" name="suatintuc" method="post">
@@ -88,7 +100,18 @@ $row = mysqli_fetch_array($kq);
             </div>
                
             <!-- -------------------- -->
-            
+
+            <div class="txt-gv-top">
+            <div class="txt-gv-lb">
+            <label>Ảnh đại diện:</label>
+                    <img src="<?php echo $row['anhtt']; ?>" height="100" width="100">
+                    <input type="hidden" name="hinhcu" value="<?php echo $row['anhtt']; ?>">
+                    <input type="file" name="anhtt">
+                    <input type="hidden" name="MAX_FILE_SIZE" value="1000000">
+                </div>
+            </div>
+           
+                
 
             <!-- -------------------- -->
             

@@ -3,10 +3,8 @@ include("ketnoi.php");
 
 // Lấy dữ liệu từ form
 $idtruc = $_POST["idtruc"];
-$idnhanvien = $_POST["idnhanvien"];
 $id = $_POST["id"];
 $ngaytruc = $_POST["ngaytruc"];
-$trangthai = $_POST["trangthai"];
 
 // Kiểm tra xem id có tồn tại trong bảng sukien hay không
 if (!empty($id)) {
@@ -16,7 +14,7 @@ if (!empty($id)) {
 
     if ($row['count'] > 0) {
         // Thêm vào bảng lichtruc nếu id hợp lệ
-        $sql = "INSERT INTO lichtruc (idtruc, idnhanvien, id, ngaytruc, trangthai) VALUES ('".$idtruc."', '".$idnhanvien."','".$id."', '".$ngaytruc."','".$trangthai."')";
+        $sql = "INSERT INTO lichtruc (idtruc, id, ngaytruc) VALUES ('".$idtruc."','".$id."', '".$ngaytruc."')";
         $kq = mysqli_query($conn, $sql);
 
         if ($kq) {
@@ -39,7 +37,7 @@ if (!empty($id)) {
     }
 } else {
     // Thêm vào bảng lichtruc với id là null (nếu được phép)
-    $sql = "INSERT INTO lichtruc (idtruc, idnhanvien, id, ngaytruc) VALUES ('".$idtruc."', '".$idnhanvien."', NULL, '".$ngaytruc."')";
+    $sql = "INSERT INTO lichtruc (idtruc, id, ngaytruc) VALUES ('".$idtruc."', NULL, '".$ngaytruc."')";
     $kq = mysqli_query($conn, $sql);
 
     if ($kq) {

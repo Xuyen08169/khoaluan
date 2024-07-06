@@ -1,12 +1,11 @@
-<!doctype html>
-<html class="no-js" lang="en">
+
+<?php
+ include("htrangchu.php")
+
+?>
 
 <head>
-    <!-- meta data -->
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    
 
     <!--font-family-->
     <link
@@ -48,118 +47,18 @@
     <link rel="stylesheet" href="assets/css/responsive.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 
-    <!--[if lt IE 9]>
-			<script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-			<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-        <![endif]-->
+
+   
 
 </head>
 
 <body>
-    <!--[if lte IE 9]>
-            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
-        <![endif]-->
+   
 
-    <!--header-top start -->
-    <header id="header-top" class="header-top">
-        <ul>
+    
 
-            <!-- <li class="head-responsive-right pull-right">
-					<div class="header-top-right">
-						<ul>
-							<li class="header-top-contact">
-								+1 222 777 6565
-							</li>
-							<li class="header-top-contact">
-								<a href="#">sign in</a>
-							</li>
-							<li class="header-top-contact">
-								<a href="#">register</a>
-							</li>
-						</ul>
-					</div>
-				</li> -->
-        </ul>
-
-    </header>
-    <!--/.header-top-->
-    <!--header-top end -->
-
-
-    <!-- top-area Start -->
-
-
-    <div class="top-area">
-        <div class="header-area">
-            <!-- Start Navigation -->
-            <nav class="navbar navbar-default bootsnav  navbar-sticky navbar-scrollspy" data-minus-value-desktop="70"
-                data-minus-value-mobile="55" data-speed="1000">
-
-                <div class="container">
-
-                    <!-- Start Header Navigation -->
-                    <div class="navbar-header">
-                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-menu">
-                            <i class="fa fa-bars"></i>
-                        </button>
-                        <!-- <div style="margin-left: 175;">
-                        <img src="hinhanh/logo.png" width="280" height="100">
-                        </div> -->
-
-                        <!-- <h3 class="navbar-brand"> Trà Vinh</h3> -->
-                        <div>
-                            <h3 class="navbar-brand" style="padding-left: 100px;"> Trà Vinh</h3></br>
-                            <p class="navbar-brand">Miền Đất Thuận Thiên</p>
-                        </div>
-
-                        <!-- <a class="navbar-brand" href="index.html">list<span>race</span></a> -->
-
-                    </div>
-                    <!--/.navbar-header-->
-                    <!-- End Header Navigation -->
-
-                    <!-- Collect the nav links, forms, and other content for toggling -->
-                    <div class="collapse navbar-collapse menu-ui-design" id="navbar-menu">
-                        <ul class="nav navbar-nav navbar-right" data-in="fadeInDown" data-out="fadeOutUp">
-                            <li class=""><a href="home.php"> Trang chủ</a></li>
-                            <li class=""><a href="thongtin.php"> Giới thiệu</a></li>
-                            <li class=""><a href="tintucmoi.php">Tin tức </a></li>
-                            <li class=""><a href="sukienmoi.php"> Sự kiện</a></li>
-                            <li class=""><a href="hotro.php"> Liên hệ</a></li>
-
-                            <!-- <li class="scroll"><a href="#contact">contact</a></li> -->
-
-                            <li class="scroll" style="justify-content: right;">
-                                <select name="language" id="language">
-                                    <option value="default">EN</option>
-                                    <option value="Bangla">BN</option>
-                                    <option value="Arabic">AB</option>
-                                    <option value="Arabic">VN</option>
-                                </select>
-                            </li>
-
-
-
-
-                        </ul>
-                        <!--/.nav -->
-                    </div><!-- /.navbar-collapse -->
-                </div>
-                <!--/.container-->
-            </nav>
-            <!--/nav-->
-            <!-- End Navigation -->
-        </div>
-
-        <!--/.header-area-->
-        <!-- <div class="clearfix"></div> -->
-
-        </section><!-- /.top-area-->
-        <!-- top-area End -->
-
+   
         <!--welcome-hero start -->
         <section id="home" class="welcome-hero">
             <div class="container">
@@ -203,7 +102,7 @@
                                 <div class="single-list-topics-icon">
                                     <i class="bi bi-bank" style="font-size: 35px; color: #000000;"></i>
                                 </div>
-                                <h2><a href="#"> Khu </a></h2>
+                                <h2><a> Khu </a></h2>
                                 <p> Đền thờ có 4 khu chính</p>
                             </div>
                         </li>
@@ -214,7 +113,7 @@
                                     <i class="bi bi-rulers" style="font-size: 35px; color: #000000;"></i>
 
                                 </div>
-                                <h2><a href="#"> Diện tích </a></h2>
+                                <h2><a> Diện tích </a></h2>
                                 <p> 3600 m2 (54 ha )</p>
                             </div>
                         </li>
@@ -224,7 +123,7 @@
                                 <div class="single-list-topics-icon">
                                     <i class="ti ti-air-traffic-control" style="font-size: 35px; color: #000000;"></i>
                                 </div>
-                                <h2><a href="#">Di sản </a></h2>
+                                <h2><a>Di sản </a></h2>
                                 <p> 3715</p>
                             </div>
                         </li>
@@ -235,26 +134,17 @@
                                     <i class="bi bi-tree" style="font-size: 35px; color: #000000;"></i>
 
                                 </div>
-                                <h2><a href="#"> Cây xanh </a></h2>
+                                <h2><a> Cây xanh </a></h2>
                                 <p>hhhh </p>
                             </div>
                         </li>
-                        <!-- <li>
-                            <div class="single-list-topics-content">
-                                <div class="single-list-topics-icon">
-                                    <i class="flaticon-transport"></i>
-                                </div>
-                                <h2><a href="#">Thông tin sự kiện</a></h2>
-                                <p>12 bài </p>
-                            </div>
-                        </li> -->
+                     
                     </ul>
                 </div>
             </div>
             <!--/.container-->
 
-        </section>
-
+    
         <style>
         .news-container {
             display: flex;
@@ -321,8 +211,8 @@
             <h4 class="nb"> Tin tức nổi bật</h4>
         </div>
 
-        <!-- Tin tức nổi bật -->
-        <?php
+<!-- Tin tức nổi bật -->
+<?php
 // Include the database connection file
 include("../ketnoi.php");
 
@@ -331,9 +221,10 @@ if (!$conn || $conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-// Fetch the top 3 highlighted news
-$sql = "SELECT idtintuc, tieude, noidung, ngaydang FROM tintuc WHERE noibat = 1 ORDER BY ngaydang DESC LIMIT 3";
-$result = $conn->query($sql);
+// Prepare and execute the query
+$stmt = $conn->prepare("SELECT idtintuc, tieude, noidung, ngaydang, anhtt FROM tintuc WHERE noibat = 1 ORDER BY ngaydang DESC LIMIT 5");
+$stmt->execute();
+$result = $stmt->get_result();
 
 if ($result->num_rows > 0) {
     echo '<div class="news-container">';
@@ -344,13 +235,15 @@ if ($result->num_rows > 0) {
         $formattedDate = (new DateTime($originalDate))->format('d/m/Y');
 
         // Display news item
-        echo '<div class="news-item" style="font-family: Arial, sans-serif; margin-bottom: 20px;">';
-        echo '<img src="hinhanh/' . $row["tieude"] . '.jpg" class="news-image" width="200" height="200" alt="' . htmlspecialchars($row["tieude"]) . '">';
-        echo '<div class="news-content" style="display: flex; flex-direction: column; margin-left: 15px;">';
-        echo '<div class="news-title" style="font-size: 18px; font-weight: bold;">' . htmlspecialchars($row["tieude"]) . '</div>';
-        echo '<div class="news-date" style="color: gray;">Ngày đăng: ' . $formattedDate . '</div>';
-        echo '<div class="news-description" style="margin-top: 10px;">' . htmlspecialchars(substr($row["noidung"], 0, 100)) . '...';
-        echo '<span class="read-more" style="margin-left: 10px;"><a href="chitiet.php?id=' . $row["idtintuc"] . '">Xem thêm</a></span></div>';
+        echo '<div class="news-item">';
+        echo '<img class="news-image" src="' . htmlspecialchars($row["anhtt"]) . '" width="200" height="200" alt="' . htmlspecialchars($row["tieude"]) . '">';
+        // echo '<img class="news-title" src="' . htmlspecialchars($row["anhtt"]) . '" alt="News Image">';
+
+        echo '<div class="news-content">';
+        echo '<div class="news-title">' . htmlspecialchars($row["tieude"]) . '</div>';
+        echo '<div class="news-date">Ngày đăng: ' . $formattedDate . '</div>';
+        echo '<div class="news-description">' . htmlspecialchars(substr($row["noidung"], 0, 100)) . '...';
+        echo '<span class="read-more"><a href="chitiet.php?id=' . htmlspecialchars($row["idtintuc"]) . '">Xem thêm</a></span></div>';
         echo '</div>';
         echo '</div>';
     }
@@ -360,16 +253,12 @@ if ($result->num_rows > 0) {
     echo "Không có bài viết nào.";
 }
 
+$stmt->close();
 $conn->close();
 ?>
 
 
 
-
-        <!--/.list-topics-->
-        <!--list-topics end-->
-
-        <!--explore start -->
         <!-- Khung Thông Tin và Bản Đồ Bắt Đầu -->
         <div
             style="display: flex; justify-content: center; margin: 50px auto; border: 1px solid #ccc; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); background: #f5f5f5; padding: 20px; font-family: Arial, Helvetica, sans-serif;">
@@ -405,159 +294,6 @@ $conn->close();
             </div>
             <!-- Hướng Dẫn Chỉ Đường Kết Thúc -->
 
-        </div>
-        <!-- Khung Thông Tin và Bản Đồ Kết Thúc -->
-        <!--explore end -->
-
-        <!--reviews start -->
-        <!-- <section id="reviews" class="reviews"> -->
-        <!-- <div class="section-header">
-                <h2> Những Tin Tức Nổi Bật</h2>
-
-            </div>
-        
-            <div class="reviews-content">
-                <div class="testimonial-carousel">
-                    <div class="single-testimonial-box">
-                        <div class="testimonial-description">
-                            <div class="testimonial-info">
-                                <div class="testimonial-img">
-                                    <img src="assets/images/clients/c1.png" alt="clients">
-                                </div>
-                                
-                                <div class="testimonial-person">
-                                    <h2>Tom Leakar</h2>
-                                    <h4>london, UK</h4>
-                                    <div class="testimonial-person-star">
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                    </div>
-                                </div>
-                            
-                            </div>
-                
-                            <div class="testimonial-comment">
-                                <p>
-                                    Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
-                                    mollit anim id est laborum. Sed ut perspiciatis eaque.
-                                </p>
-                            </div>
-                
-                        </div>
-                        
-                    </div>
-                 -->
-
-
-
-        <!-- </section> -->
-        <!--/.reviews-->
-        <!--reviews end -->
-
-        <!-- statistics strat -->
-
-        <!--/.counter-->
-        <!-- statistics end -->
-
-        <!--blog start -->
-        <!-- <section id="blog" class="blog" >
-			<div class="container">
-				<div class="section-header">
-					<h2> Tin tức nổi bật</h2>
-					<p>Always upto date with our latest News and Articles </p>
-				</div>
-				<div class="blog-content">
-					<div class="row">
-						<div class="col-md-4 col-sm-6">
-							<div class="single-blog-item">
-								<div class="single-blog-item-img">
-									<img src="assets/images/blog/b1.jpg" alt="blog image">
-								</div>
-								<div class="single-blog-item-txt">
-									<h2><a href="#">How to find your Desired Place more quickly</a></h2>
-									<h4>posted <span>by</span> <a href="#">admin</a> march 2018</h4>
-									<p>
-										Lorem ipsum dolor sit amet, consectetur de adipisicing elit, sed do eiusmod tempore incididunt ut labore et dolore magna.
-									</p>
-								</div>
-							</div>
-						</div> -->
-
-
-        </di>
-        <!--/.container-->
-
-        </section>
-        <!--/.blog-->
-        <!--blog end -->
-
-        <!--subscription strat -->
-        <!--/subscription-->
-        <!--subscription end -->
-
-        <!--footer start-->
-        <footer id="footer" class="footer">
-            <div class="container">
-                <!-- <div class="footer-menu">
-		           	<div class="row"> -->
-                <!-- <div class="col-sm-3">
-			           		 <div class="navbar-header">
-				                <a class="navbar-brand" href="index.html">list<span>race</span></a>
-				            </div>
-			           	</div> -->
-                <!-- <div class="col-sm-9">
-			           		<ul class="footer-menu-item">
-			                    <li class="scroll"><a href="#works">how it works</a></li>
-			                    <li class="scroll"><a href="#explore">explore</a></li>
-			                    <li class="scroll"><a href="#reviews">review</a></li>
-			                    <li class="scroll"><a href="#blog">blog</a></li>
-			                    <li class="scroll"><a href="#contact">contact</a></li>
-			                    <li class=" scroll"><a href="#contact">my account</a></li>
-			                </ul>
-			           	</div>
-		           </div>
-				</div> -->
-                <div class="hm-footer-copyright">
-                    <div class="row">
-                        <div class="col-sm-5">
-                            <p>
-                                &copy;copyright. designed by Xuyên Nguyễn
-                                <!-- <a href="https://www.themesine.com/">themesine</a> -->
-                            </p>
-                            <!--/p-->
-                        </div>
-                        <div class="col-sm-7">
-                            <div class="footer-social">
-                                <span><i class="fa fa-phone" style=" color: #ffffff; font-size:20px;">
-                                        0768894581</i></span>
-                                <a href="#"><i class="fa fa-facebook"></i></a>
-                                <a href="#"><i class="fa fa-twitter"></i></a>
-                                <a href="#"><i class="fa fa-linkedin"></i></a>
-                                <a href="#"><i class="fa fa-google-plus"></i></a>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-                <!--/.hm-footer-copyright-->
-            </div>
-            <!--/.container-->
-
-            <div id="scroll-Top">
-                <div class="return-to-top">
-                    <i class="fa fa-angle-up " id="scroll-top" data-toggle="tooltip" data-placement="top" title=""
-                        data-original-title="Back to Top" aria-hidden="true"></i>
-                </div>
-
-            </div>
-            <!--/.scroll-Top-->
-
-        </footer>
-        <!--/.footer-->
-        <!--footer end-->
 
         <!-- Include all js compiled plugins (below), or include individual files as needed -->
 
@@ -589,23 +325,16 @@ $conn->close();
 
 </body>
 
-</html>
+<?php include("fortrangchu.php")
 
-<!-- single-list-topics-content 
-      single-list-topics-icon [class^="flaticon-"]:before, 
-	  .single-list-topics-content:hover 
 
--->
-<!-- <div class="header-top-left">
-						<ul>
-							<li class="select-opt" style="justify-content: right;">
-								<select name="language" id="language">
-									<option value="default">EN</option>
-									<option value="Bangla">BN</option>
-									<option value="Arabic">AB</option>
-									<option value="Arabic">VN</option>
-								</select>
-							</li>
-							
-						</ul>
-					</div>  -->
+
+?>
+<style>
+  .nav.navbar-nav.navbar-right > li:nth-child(1) a {
+    color: #ffb239; /* Màu bạn muốn hiển thị cho liên kết hiện tại */
+    font-weight: bold; /* In đậm để nhấn mạnh */
+}
+
+</style>
+

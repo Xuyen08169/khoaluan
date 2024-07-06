@@ -1,81 +1,97 @@
 <?php
-include("header_nhanvien.php");
-include("ketnoi.php");
+include ("header_nhanvien.php");
+include ("ketnoi.php");
 
-// Kiểm tra xem session đã bắt đầu chưa, nếu chưa thì bắt đầu session
+// Bắt đầu session để sử dụng session variables
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
 
-// Lấy id lịch trực từ URL
-$idlichtruc = $_GET['user'];
+// Lấy thông tin từ biến GET
+$idpc = $_GET['user'];
 
-// Lấy thông tin chi tiết của lịch trực
-$sql = "
-    SELECT tt.id, tt.trangthai, tt.nguoitruccu, tt.lydo, tt.nguoiduyet, 
-           lt.ngaytruc, sk.tensukien, tk.hoten, tt.idnhanvien
-    FROM phancong tt
-    JOIN lichtruc lt ON tt.idtruc = lt.idtruc
-    JOIN sukien sk ON lt.id = sk.id
-    JOIN taikhoan tk ON tt.idnhanvien = tk.idnhanvien
-    WHERE tt.id = '$idlichtruc'";
-$result = mysqli_query($conn, $sql) or die("Không thể xuất thông tin " . mysqli_error($conn));
+// Truy vấn SQL để lấy thông tin chi tiết của idpc
+$sql_detail = "
+SELECT 
+    phancong.idpc,
+    taikhoan.hoten AS nguoitrc,
+    lichtruc.ngaytruc,
+    IFNULL(sukien.tensukien, 'Không có sự kiện') AS tensukien,
+    phancong.trangthai,
+    phancong.nguoitruccu,
+    phancong.lydo,
+    phancong.nguoiduyet
+FROM 
+    phancong
+JOIN 
+    lichtruc ON phancong.idtruc = lichtruc.idtruc
+LEFT JOIN 
+    sukien ON phancong.id = sukien.id
+JOIN 
+    taikhoan ON phancong.idnhanvien = taikhoan.idnhanvien
+WHERE 
+    phancong.idpc = $idpc
+";
+$result_detail = mysqli_query($conn, $sql_detail) or die("Không thể truy vấn chi tiết: " . mysqli_error($conn));
+$row_detail = mysqli_fetch_assoc($result_detail);
 
-if ($row = mysqli_fetch_array($result)) {
-    $id = $row['id'];
-    $ngaytruc = $row['ngaytruc'];
-    $tensukien = $row['tensukien'];
-    $hoten = $row['hoten'];
-    $idnhanvien = $row['idnhanvien'];
-    $nguoitruccu = $row['nguoitruccu'];
-    $lydo = $row['lydo'];
-    $nguoiduyet = $row['nguoiduyet'];
-} else {
-    echo "Không tìm thấy lịch trực.";
-    exit;
-}
-
-// Xử lý khi form được submit
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+// Nếu form được gửi đi
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $lydo = $_POST['lydo'];
-    $trangthai = "Phân công";
-    $nguoitruccu = $hoten;  // Người trực cũ bằng giá trị của người trực
-    $nguoiduyet = NULL;
 
-    $sql_update = "
-        UPDATE phancong
-        SET trangthai='$trangthai', lydo='$lydo', nguoitruccu='$nguoitruccu', nguoiduyet=NULL
-        WHERE id='$idlichtruc'";
+    $sql_update = "UPDATE phancong SET lydo = '$lydo', nguoiduyet = NULL, trangthai = 'Chờ duyệt', nguoitruccu = '{$row_detail['nguoitrc']}' WHERE idpc = $idpc";
 
     if (mysqli_query($conn, $sql_update)) {
-        echo "Cập nhật thành công.";
-        header("Location: LICHTRUC_CANHAN.php");
-        exit;
-    } else {
-        echo "Cập nhật thất bại: " . mysqli_error($conn);
+        // Đóng kết nối
+        mysqli_close($conn);
+
+        // Thực thi mã JavaScript để thông báo và chuyển hướng
+        echo "<script language='javascript'>
+            alert('Cập nhật thành công');
+            window.location='LICHTRUC_CANHAN.php';
+          </script>";
+        exit(); // Đảm bảo kịch bản dừng lại sau khi chuyển hướng
     }
+
 }
 ?>
 
-<div class="container">
-    <h2>Yêu cầu hoán chuyển</h2>
-    <form method="POST">
-        <input type="hidden" name="trangthai" value="Xin hoán chuyển">
-        <input type="hidden" name="ngaytruc" value="<?php echo $ngaytruc; ?>">
-        <input type="hidden" name="hoten" value="<?php echo $hoten; ?>">
-        <input type="hidden" name="tensukien" value="<?php echo $tensukien; ?>">
-        <input type="hidden" name="nguoitruccu" value="<?php echo $nguoitruccu; ?>">
-        <input type="hidden" name="nguoiduyet" value="NULL">
-        
-        <div class="form-group">
-            <label for="lydo">Lý do:</label>
-            <input type="text" class="form-control" id="lydo" name="lydo" value="<?php echo $lydo; ?>">
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card mb-4">
+            <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                <h6 class="m-0 font-weight-bold text-primary"
+                    style="font-size: 25px; padding-left: 270px; padding-top:15px;">
+                    CẬP NHẬT LÝ DO PHÂN CÔNG LỊCH TRỰC</h6>
+            </div>
+            <div class="table-responsive p-3">
+                <form action="" method="post">
+                    <table class="table align-items-center table-flush">
+                        <tr>
+                            <th>ID:</th>
+                            <td><?php echo $row_detail['idpc']; ?></td>
+                        </tr>
+                        <tr>
+                            <th>Người trực:</th>
+                            <td><?php echo $row_detail['nguoitrc']; ?></td>
+                        </tr>
+                        <tr>
+                            <th>Ngày trực:</th>
+                            <td><?php echo date('d/m/Y', strtotime($row_detail['ngaytruc'])); ?></td>
+                        </tr>
+                        <tr>
+                            <th>Sự kiện:</th>
+                            <td><?php echo $row_detail['tensukien']; ?></td>
+                        </tr>
+                        <tr>
+                            <th>Lý do:</th>
+                            <td><input type="text" name="lydo" value="<?php echo $row_detail['lydo']; ?>"></td>
+                        </tr>
+                    </table>
+                    <input type="submit" name="update" value="Cập nhật">
+                </form>
+            </div>
         </div>
-        
-        <button type="submit" class="btn btn-primary">Cập nhật</button>
-    </form>
+    </div>
 </div>
-
-<?php
-mysqli_close($conn);
-?>
+<?php include ("footer_nhanvien.php"); ?>

@@ -14,6 +14,7 @@
     line-height: 1.5;
     font-family: Arial, Helvetica, sans-serif;
     text-transform: none;
+    color: #000;
 }
 
 .td {
@@ -59,7 +60,7 @@
 .khung {
     box-shadow: 6px 6px 6px black;
     background: #f9ffd9;
-    margin: -23px 230px;
+    margin: -23px 310px;
     max-width: 900px;
 
 
@@ -189,3 +190,10 @@
 <?php include ("fortrangchu.php")
 
 ?>
+<style>
+  .nav.navbar-nav.navbar-right > li:nth-child(2) a {
+    color: #ffb239; /* Màu bạn muốn hiển thị cho liên kết hiện tại */
+    font-weight: bold; /* In đậm để nhấn mạnh */
+}
+
+</style>

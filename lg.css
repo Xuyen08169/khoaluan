@@ -297,52 +297,6 @@ html {
     background-color: #f4f5f8;
 }
 
-/* Footer nè nhaaa */
-/* .footer {
-    background-color: #e9ecef;
-    text-align: center;
-    color: #1b25da;
-    font-weight: bold;
-    height: 25px;
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-}
- */
-
-/* Thanh trên cùng center nhé */
-/* .top-center {
-    display: flex;
-    align-items: center;
-    width: 95%;
-    background-color: #ffffff;
-    height: 40px;
-    padding-left: 30px;
-    margin: 0 auto;
-    border-radius: 5px;
-    margin-top: 15px;
-    margin-bottom: 20px;
-    border-left: 5px solid #FFCC70;
-} */
-
-/* .top-center p {
-    color: #000000;
-    font-weight: 600;
-    font-size: 20px;
-} */
-
-/* thân web */
-/* .table-center {
-    display: flex;
-    width: 95%;
-    background-color: #ffffff;
-    margin: 0 auto;
-    border-radius: 5px;
-    padding: 10px 10px;
-    flex-direction: column;
-    margin-bottom: 20px;
-} */
-
 /* các button */
 .btn-center {
     display: flex;

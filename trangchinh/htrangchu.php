@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html class="no-js" lang="en">
 
@@ -44,6 +45,8 @@
         
         <!--responsive.css-->
         <link rel="stylesheet" href="assets/css/responsive.css">
+
+        <!-- <link rel="stylesheet" href="txt.css"> -->
         
         <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -123,7 +126,7 @@
                         <ul class="nav navbar-nav navbar-right" data-in="fadeInDown" data-out="fadeOutUp">
                             <li class=""><a href="home.php"> Trang chủ</a></li>
                             <li class=""><a href="thongtin.php"> Giới thiệu</a></li>
-                            <li class=""><a href="tintucmoi.php">Tin tức </a></li>
+                            <li class=""><a href="trangtintuc.php">Tin tức </a></li>
                             <li class=""><a href="sukienmoi.php"> Sự kiện</a></li>
                             <li class=""><a href="hotro.php">Liên hệ</a></li>
                          

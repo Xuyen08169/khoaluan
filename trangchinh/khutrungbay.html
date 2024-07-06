@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trang Web Mẫu</title>
+    <link rel="stylesheet" href="txt.css">
+</head>
+
+<body>
+    <header>
+        <h1>Khu Nhà Trưng Bày </h1>
+    </header>
+    <div class="info">
+        <p>Đây là Khu nhà trưng bày nằm trong khuôn viên đền thờ nơi đây lưu giữ những hình ảnh, vật dụng, dụng cụ, ghi chép lịch sử về cuộc đời 
+            của Bác, quá trình giải phóng dân tộc .
+        </p>
+        <p> Nơi cũng lưu giữ tài liệu lịch sử quá trình hình thành đền thờ Bác, những di tíc quá trình chiến đầu bảo vệ Đền thờ</p>
+    </div>
+    <section class="introduction">
+       
+        <img src="hinhanh\img\52.jpg" alt="Hình ảnh lớn" class="large-image">
+        <img src="hinhanh\img\22.jpg" alt="Hình ảnh lớn" class="large-image">
+       
+    </section>
+    <label> Hình phía trước nhà trưng bày</label>
+
+    <section class="gallery">
+        <div class="left-image" onclick="switchImage(this)">
+            <img src="hinhanh\img\16.jpg" alt="Hình ảnh nhỏ 1">
+        </div>
+        <div class="right-images">
+            <div class="image-container" onclick="switchImage(this)">
+                <img src="hinhanh\img\17.jpg" alt="Hình ảnh nhỏ 1">
+            </div>
+            <div class="image-container" onclick="switchImage(this)">
+                <img src="hinhanh\img\27.jpg" alt="Hình ảnh nhỏ 2">
+            </div>
+            <div class="image-container" onclick="switchImage(this)">
+                <img src="hinhanh\img\18.jpg" alt="Hình ảnh nhỏ 3">
+            </div>
+        </div>
+    
+        <div class="info1">
+            <p>Nhà Trưng bày được xây dựng theo kiến trúc truyền thống dân tộc. Trong đó, nhiều hiện vật, hình ảnh, tài liệu giúp người tham quan hiểu được một cách khái quát về cuộc đời hoạt động của Bác; truyền thống đấu tranh kiên cường, bất khuất trong kháng chiến và những thành tựu trong công cuộc đổi mới của Đảng bộ, nhân dân tỉnh Trà Vinh; quá trình xây dựng và chiến đấu bảo vệ ngôi Đền.</p>
+            <p>Hình ảnh bên trong khi bước chân vào đền thờ</p>
+        </div>
+    </section>
+    
+    <script>
+    function switchImage(container) {
+        // Lấy ảnh trong div được click
+        var clickedImage = container.querySelector('img');
+        
+        // Lấy ảnh trong div bên trái
+        var leftImage = document.querySelector('.left-image img');
+    
+        // Nếu có ảnh trong div bên trái và không phải là ảnh đã click
+        if (leftImage && leftImage !== clickedImage) {
+            // Lấy src của ảnh đã click
+            var clickedSrc = clickedImage.src;
+    
+            // Đặt src của ảnh đã click thành src của ảnh bên trái
+            clickedImage.src = leftImage.src;
+    
+            // Đặt src của ảnh bên trái thành src của ảnh đã click trước đó
+            leftImage.src = clickedSrc;
+        }
+    }
+    </script>
+    
+    
+
+    <section class="square-gallery">
+        <img src="hinhanh\img\43.jpg" alt="Hình ảnh vuông 1">
+        <img src="hinhanh\img\44.jpg"  alt="Hình ảnh vuông 2">
+        <img src="hinhanh\img\45.jpg"  alt="Hình ảnh vuông 3">
+        <img src="hinhanh\img\46.jpg"  alt="Hình ảnh vuông 4">
+    </section>
+</body>
+</html>

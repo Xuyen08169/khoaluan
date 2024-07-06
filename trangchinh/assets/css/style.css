@@ -49,7 +49,7 @@ body{
 	overflow-x:hidden;
 }
 
-a,a:hover,a:active,a:focus {
+ .m{
 	display:inline-block;
 	text-decoration:none;
 	color: #343a3f;
@@ -206,7 +206,12 @@ nav.navbar.bootsnav ul.nav > li > a {
     -o-transition: 0.3s linear; 
     transition: 0.3s linear;
 }
-nav.navbar.bootsnav ul.nav > li > a {padding:34px 21px;}
+nav.navbar.bootsnav ul.nav > li > a {
+    padding:34px 21px;
+    text-decoration: none;
+} 
+
+
 nav.navbar.bootsnav ul.nav > li > a:hover,nav.navbar.bootsnav ul.nav > li > a:focus{
     color: yellow;}
     
@@ -253,7 +258,7 @@ nav.navbar.bootsnav .navbar-toggle i{color: #ff545a;}
 
 .welcome-hero {
     position: relative;
-    background:url(../images/welcome-hero/4k3.jpg)no-repeat;
+    background:url(../images/welcome-hero/nen1.png)no-repeat;
     background-position:center;
     background-size:cover;
     text-align: center;

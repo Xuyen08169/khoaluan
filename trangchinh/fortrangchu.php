@@ -54,25 +54,28 @@
 		           </div>
 				</div> -->
 				<div class="hm-footer-copyright">
-					<div class="row">
-						<div class="col-sm-5" >
-							<p>
-								&copy;copyright. designed and developed Xuyên Nguyễn
-								<!-- <a href="https://www.themesine.com/">Kenz</a> -->
-							</p><!--/p-->
-						</div>
-						<div class="col-sm-7">
-							<div class="footer-social">
-								<span style=" color: honeydew;"><i class="fa fa-phone"> (+84) 076889581</i></span>
-								<a href="#"><i class="fa fa-facebook"></i></a>	
-								<a href="#"><i class="fa fa-twitter"></i></a>
-								<a href="#"><i class="fa fa-linkedin"></i></a>
-								<a href="#"><i class="fa fa-google-plus"></i></a>
-							</div>
-						</div>
-					</div>
-					
-				</div><!--/.hm-footer-copyright-->
+                    <div class="row">
+                        <div class="col-sm-5">
+                            <p>
+                                &copy;copyright. designed by Xuyên Nguyễn
+                                <!-- <a href="https://www.themesine.com/">themesine</a> -->
+                            </p>
+                            <!--/p-->
+                        </div>
+                        <div class="col-sm-7">
+                            <div class="footer-social">
+                                <span><i class="fa fa-phone" style=" color: #ffffff; font-size:20px;">
+                                        0768894581</i></span>
+                                <a href="#"><i class="fa fa-facebook"></i></a>
+                                <a href="#"><i class="fa fa-twitter"></i></a>
+                                <a href="#"><i class="fa fa-linkedin"></i></a>
+                                <a href="#"><i class="fa fa-google-plus"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <!--/.hm-footer-copyright-->
 			</div><!--/.container-->
 
 			<div id="scroll-Top">

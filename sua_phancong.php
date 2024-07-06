@@ -25,23 +25,40 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $lydo = $_POST['lydo']; // Lý do nhập vào từ form
 
     // Cập nhật dữ liệu vào CSDL
-    $sql_update = "UPDATE phancong 
-                   SET trangthai = 'Đã duyệt HĐ', idnhanvien = ?, lydo = ?, nguoiduyet = ?, ngayduyet = NOW() 
-                   WHERE idpc = ?";
-
-    // Chuẩn bị truy vấn và sử dụng prepare statement để chống SQL Injection
-    if ($stmt = mysqli_prepare($conn, $sql_update)) {
-        mysqli_stmt_bind_param($stmt, "issi", $idnhanvien, $lydo, $nguoiduyet, $id);
-        if (mysqli_stmt_execute($stmt)) {
-            echo "<script>alert('Cập nhật thành công!');</script>";
-            echo "<script>window.location = 'QL_PHANCONG.php';</script>";
-            exit;
+    if (isset($_POST['khongduyet'])) {
+        $sql_update = "UPDATE phancong 
+                       SET trangthai = 'Không duyệt hoán đổi', nguoiduyet = ?, ngayduyet = NOW(), nguoitruccu = NULL 
+                       WHERE idpc = ?";
+        if ($stmt = mysqli_prepare($conn, $sql_update)) {
+            mysqli_stmt_bind_param($stmt, "si", $nguoiduyet, $id);
+            if (mysqli_stmt_execute($stmt)) {
+                echo "<script>alert('Cập nhật thành công!');</script>";
+                echo "<script>window.location = 'QL_PHANCONG.php';</script>";
+                exit;
+            } else {
+                echo "Lỗi: " . mysqli_error($conn);
+            }
+            mysqli_stmt_close($stmt);
         } else {
             echo "Lỗi: " . mysqli_error($conn);
         }
-        mysqli_stmt_close($stmt);
-    } else {
-        echo "Lỗi: " . mysqli_error($conn);
+    } elseif (isset($_POST['duyet'])) {
+        $sql_update = "UPDATE phancong 
+                       SET trangthai = 'Đã duyệt hoán đổi', idnhanvien = ?, lydo = ?, nguoiduyet = ?, ngayduyet = NOW() 
+                       WHERE idpc = ?";
+        if ($stmt = mysqli_prepare($conn, $sql_update)) {
+            mysqli_stmt_bind_param($stmt, "issi", $idnhanvien, $lydo, $nguoiduyet, $id);
+            if (mysqli_stmt_execute($stmt)) {
+                echo "<script>alert('Cập nhật thành công!');</script>";
+                echo "<script>window.location = 'QL_PHANCONG.php';</script>";
+                exit;
+            } else {
+                echo "Lỗi: " . mysqli_error($conn);
+            }
+            mysqli_stmt_close($stmt);
+        } else {
+            echo "Lỗi: " . mysqli_error($conn);
+        }
     }
 }
 
@@ -112,8 +129,8 @@ $result_nhanvien = mysqli_query($conn, $sql_nhanvien);
 
 
                     <div style=" margin-left: 595px;">
-                    <button type="submit" class="btn btn-primary">Cập nhật</button>
-                    <button type="submit" class="btn btn-warning">Không duyệt</button>
+                    <button type="submit" class="btn btn-primary" name="duyet">Cập nhật</button>
+                    <button type="submit" class="btn btn-warning" name="khongduyet">Không duyệt</button>
                     <a href="QL_PHANCONG.php" class="btn btn-secondary">Hủy</a>
                     </div>
                    

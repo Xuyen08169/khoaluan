@@ -12,15 +12,25 @@ include("header.php");
         <div class="table-center">
             <div class="btn-center">
                 <div class="top-h4">
-                    <h4 class="top-h4" style=" margin-left:85px;"> Lịch Trực Mới</h4>
+                    <h4 class="top-h4"> Lịch Trực Mới</h4>
                 </div>
             </div>
 
             <div class="txt-gv-top">
-                <div class="txt-gv-lb">
+                <div class="txt-gv-lb" style="display:none;">
                     <label>ID:</label>
                     <input type="text" name="idtruc" readonly></input>
                 </div>
+              
+                
+                
+            </div>
+
+           
+            <!-- -------------------- -->
+           
+
+            <div class="txt-gv-top">
               
                 <div class="txt-gv-lb">
                     <label>Người trực:</label>
@@ -40,14 +50,10 @@ include("header.php");
                 
                 
             </div>
-
-           
-            <!-- -------------------- -->
-           
-
+            <!-- ---------------------------------- -->
             <div class="txt-gv-top">
               
-            <div class="txt-gv-lb">
+              <div class="txt-gv-lb">
                   <label>Ngày trực:</label>
                   <input type="date" name="ngaytruc"></input>
               </div>
@@ -55,33 +61,25 @@ include("header.php");
 
               <div class="txt-gv-lb">
                     <label> Tên sự kiện:</label>
+                    <!-- <input type="text" name="id"> -->
                     <select name="id">
                     <?php
                             $sql = "SELECT id, tensukien FROM sukien";
                             $kq = mysqli_query($conn, $sql) or die("Không thể thêm: " . mysqli_error($conn));
+                            echo "<option value=\"\"></option>";
                             while ($row = mysqli_fetch_assoc($kq)) {
                                 $id = $row['id'];
                                 $tensukien = $row['tensukien'];
-                                echo "<option value=\"\"></option>";
+                               
                                 echo "<option value=\"$id\">$tensukien</option>";
 
                                 }
                             ?>
                     </select>
-             
+                <!-- </input> -->
                         
 
                 </div>
-                
-            </div>
-            <!-- ---------------------------------- -->
-            <div class="txt-gv-top">
-              
-            <div class="txt-gv-lb">
-                  <label>Trạng thái:</label>
-                  <input type="text" name="trangthai"></input>
-              </div>
-
                 
               
               

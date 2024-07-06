@@ -5,8 +5,6 @@ include("ketnoi.php");
 $idtruc = intval($_POST["idtruc"]);
 $ngaytruc = mysqli_real_escape_string($conn, $_POST["ngaytruc"]);
 $id = isset($_POST["id"]) ? intval($_POST["id"]) : null;
-$idnhanvien = intval($_POST["idnhanvien"]);
-$trangthai = mysqli_real_escape_string($conn, $_POST["trangthai"]);
 
 // Check if the provided ID exists in the sukien table
 if (!empty($id)) {
@@ -16,7 +14,7 @@ if (!empty($id)) {
 
     if ($row['count'] > 0) {
         // Update lichtruc with the provided ID
-        $sql = "UPDATE lichtruc SET ngaytruc = '$ngaytruc', id = $id, idnhanvien = $idnhanvien, trangthai = '$trangthai'
+        $sql = "UPDATE lichtruc SET ngaytruc = '$ngaytruc', id = $id
                 WHERE idtruc = $idtruc";
     } else {
         // Display error if ID does not exist in sukien
@@ -28,7 +26,7 @@ if (!empty($id)) {
     }
 } else {
     // Update lichtruc without the ID
-    $sql = "UPDATE lichtruc SET ngaytruc = '$ngaytruc', id = NULL, idnhanvien = $idnhanvien, trangthai = '$trangthai'
+    $sql = "UPDATE lichtruc SET ngaytruc = '$ngaytruc', id = NULL
             WHERE idtruc = $idtruc";
 }
 

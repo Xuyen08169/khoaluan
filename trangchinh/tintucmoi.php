@@ -140,3 +140,10 @@ h1 {
 <?php include ("fortrangchu.php")
 
 ?>
+<style>
+  .nav.navbar-nav.navbar-right > li:nth-child(3) a {
+    color: #ffb239; /* Màu bạn muốn hiển thị cho liên kết hiện tại */
+    font-weight: bold; /* In đậm để nhấn mạnh */
+}
+
+</style>

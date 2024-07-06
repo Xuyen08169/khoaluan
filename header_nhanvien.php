@@ -59,15 +59,8 @@ include ("ketnoi.php");
         <!-- partial:partials/_navbar.html -->
         <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
             <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
-                <!-- <a> Admin</a> -->
-                <?php
-                    // Kiểm tra xem session có tồn tại và có chứa tên người dùng không
-                    if (isset($_SESSION['hoten'])) {
-                        echo '<p>' . $_SESSION['hoten'] . '</p>';
-                    } else {
-                        echo '<p>Chào mừng bạn!</p>';
-                    }
-                    ?>
+                <a> NHÂN VIÊN</a>
+               
 
                 <!-- <a class="navbar-brand brand-logo" href="index.html"></a>
                 <a class="navbar-brand brand-logo-mini" href="index.html"></a> -->
@@ -108,16 +101,16 @@ include ("ketnoi.php");
 
                     <!-- Thiết lập ngôn ngữ-->
                     <li class="nav-item nav-language dropdown d-none d-md-block">
-                        <a class="nav-link dropdown-toggle" id="languageDropdown" href="#" data-toggle="dropdown"
+                        <a class="nav-link" id="languageDropdown" href="#" data-toggle="dropdown"
                             aria-expanded="false">
                             <div class="nav-language-icon">
                                 <i class="flag-icon flag-icon-us" title="us" id="us"></i>
                             </div>
                             <div class="nav-language-text">
-                                <p class="mb-1 text-black">English</p>
+                                <p class="mb-1 text-black">Vietnamese</p>
                             </div>
                         </a>
-                        <div class="dropdown-menu navbar-dropdown" aria-labelledby="languageDropdown">
+                        <!-- <div class="dropdown-menu navbar-dropdown" aria-labelledby="languageDropdown">
                             <a class="dropdown-item" href="#">
                                 <div class="nav-language-icon mr-2">
                                     <i class="flag-icon flag-icon-ae" title="ae" id="ae"></i>
@@ -135,11 +128,11 @@ include ("ketnoi.php");
                                     <p class="mb-1 text-black">English</p>
                                 </div>
                             </a>
-                        </div>
+                        </div> -->
                     </li>
                     <!------------------------------------------------------------------------------------->
                     <li class="nav-item nav-profile dropdown">
-                        <a class="nav-link dropdown-toggle" id="profileDropdown" href="#" data-toggle="dropdown"
+                        <a class="nav-link " id="profileDropdown" href="#" data-toggle="dropdown"
                             aria-expanded="false">
                             <div class="nav-profile-img">
                                 <img src="assets/images/faces/f23.jpg" alt="image">

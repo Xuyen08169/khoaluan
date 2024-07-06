@@ -72,7 +72,7 @@ function truncateString($string, $limit = 15) {
             echo "<td>" . date('d/m/Y', strtotime($row["ngaydang"])) . "</td>";
 
           
-            echo "<td  style=' font-size: 20px;'>
+         echo "<td class='nut' style=' font-size: 20px;'>
         <a href='#' class='view-details' data-id='$usern'><button style=' border: none;background: #faebd700; color: #26355D; '><ion-icon name='eye-outline'></ion-icon></button></a>
         <a href='sua_sukien.php?user=$usern'><button style=' border: none;background: #faebd700; color: #26355D'><ion-icon name='pencil'></ion-icon></button></a>
         <a href='xoa_sukien.php?user=$usern'><button style=' border: none;background: #faebd700; color: #26355D'><ion-icon name='trash'></ion-icon></button></a>

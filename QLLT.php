@@ -28,7 +28,7 @@ include("ketnoi.php");
                             <th>id</th>
                             <th>Ngày trực</th>
                             <th> Sự kiện</th>
-                            <th> Người trực</th>
+                            
                             <th>Tuỳ chọn</th>
                         </tr>
                     </thead>
@@ -56,10 +56,10 @@ include("ketnoi.php");
 
 
                 
-                        $idnhanviens = $row["idnhanvien"];//////////nếu không có khóa ngoại thì ko cần dùng đến
-                        $sql4 = "SELECT * FROM taikhoan WHERE idnhanvien='" . $idnhanviens . "'";
-                        $kq4 = mysqli_query($conn, $sql4) or die("Không thể xuất thông tin " . mysqli_error());
-                        $taikhoan = mysqli_fetch_array($kq4);
+                        // $idnhanviens = $row["idnhanvien"];//////////nếu không có khóa ngoại thì ko cần dùng đến
+                        // $sql4 = "SELECT * FROM taikhoan WHERE idnhanvien='" . $idnhanviens . "'";
+                        // $kq4 = mysqli_query($conn, $sql4) or die("Không thể xuất thông tin " . mysqli_error());
+                        // $taikhoan = mysqli_fetch_array($kq4);
 
 
 
@@ -76,7 +76,7 @@ include("ketnoi.php");
                 echo "<td> Không có sự kiện nào hết </td>"; // Hoặc thông báo lỗi khác tùy ý của bạn
             }
             
-            echo "<td> " . $taikhoan["hoten"] . "</td>";
+            // echo "<td> " . $taikhoan["hoten"] . "</td>";
 			
             echo "<td  style=' font-size: 20px;'>
                     <a href='sua_lich.php?user=$usern'><button style=' border: none;background: #faebd700; color: #26355D'><ion-icon name='pencil'></ion-icon></button></a>

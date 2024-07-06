@@ -1,3 +1,4 @@
+
 <?php
 include("ketnoi.php");
 
@@ -19,6 +20,10 @@ if (isset($_GET['id'])) {
         echo "<p><strong>Tiêu đề:</strong> " . htmlspecialchars($event['tieude']) . "</p>";
         echo "<p><strong>Nội dung:</strong> " . nl2br(htmlspecialchars($event['noidung'])) . "</p>";
         echo "<p><strong>Ngày đăng:</strong> " . date('d/m/Y', strtotime($event['ngaydang'])) . "</p>";
+
+        echo "<p><strong></strong> <img src='" . htmlspecialchars($event['anhtt']) . "' 
+        alt='Hình ảnh' style='width:100px; magin-left: 130'></p>";
+
         echo "<p><strong>Tên nhân viên:</strong> " . htmlspecialchars($event['hoten']) . "</p>";
     } else {
         echo "<p>Không tìm thấy tin tức.</p>";

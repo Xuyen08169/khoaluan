@@ -58,3 +58,30 @@
     font-size: 20px;
 }
 
+/* header */
+a {
+    display: flex; /* Sử dụng flexbox để căn chỉnh theo chiều ngang */
+    align-items: center; /* Căn chỉnh các mục con theo chiều dọc */
+    text-decoration: none; /* Loại bỏ gạch chân của liên kết */
+}
+
+.vn {
+    margin-right: 8px; /* Khoảng cách giữa biểu tượng và chữ */
+}
+
+.flag-icon {
+    font-size: 24px; /* Điều chỉnh kích thước biểu tượng */
+}
+
+.text-container {
+    display: flex;
+    align-items: center;
+}
+
+.text-black {
+    color: rgb(255, 255, 255); /* Màu sắc của chữ */
+    margin: 0; /* Loại bỏ khoảng cách xung quanh chữ */
+    margin-right: 35px;
+
+}
+

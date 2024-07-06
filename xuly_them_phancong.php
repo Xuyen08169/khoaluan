@@ -1,54 +1,34 @@
 <?php
-include("ketnoi.php");
+session_start();
+include('ketnoi.php');
 
-// Lấy dữ liệu từ form
-$idpc = $_POST["idpc"];
-$idnhanvien = $_POST["idnhanvien"];
-$idtruc = $_POST["idtruc"];
-$id = $_POST["id"];
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $idnhanvien = $_POST['idnhanvien'];
+    $idtruc = $_POST['idtruc'];
+    $id_sukien = $_POST['id_sukien'];
+    $trangthai = 'Đã phân công';
+    $nguoiduyet = $_SESSION['hoten'];
+    $ngayduyet = date('Y-m-d'); // Nếu cột ngayduyet là DATE
+    // $ngayduyet = date('Y-m-d H:i:s'); // Nếu cột ngayduyet là DATETIME
 
-$trangthai = $_POST["trangthai"];
-$nguoitruccu = $_POST["nguoitruccu"];
-$lydo = $_POST["lydo"];
-$nguoiduyet = $_POST["nguoiduyet"];
-$ngayduyet = $_POST["ngayduyet"];
-
-// Kiểm tra xem id có tồn tại trong bảng sukien hay không
-if (!empty($id)) {
-    $sql_check = "SELECT COUNT(*) AS count FROM sukien WHERE id = '$id'";
-    $result = mysqli_query($conn, $sql_check);
-    $row = mysqli_fetch_assoc($result);
-
-    if ($row['count'] > 0) {
-        // Thêm vào bảng phancong nếu id hợp lệ
-        $sql = "INSERT INTO phancong (idpc, idnhanvien, idtruc, id, trangthai, nguoitruccu, lydo, nguoiduyet, ngayduyet) 
-        VALUES ('$idpc', '$idnhanvien', '$idtruc', '$id', '$trangthai', '$nguoitruccu', '$lydo', '$nguoiduyet', '$ngayduyet')";
+    // Kiểm tra nếu $id_sukien không được set (có thể là NULL hoặc không được truyền từ form)
+    if (empty($id_sukien)) {
+        $sql = "INSERT INTO phancong (idnhanvien, idtruc, trangthai, nguoiduyet, ngayduyet)
+                VALUES ('$idnhanvien', '$idtruc', '$trangthai', '$nguoiduyet', '$ngayduyet')";
     } else {
-        // Hiển thị thông báo lỗi khi id không hợp lệ
-        echo "<script language=javascript>
-                alert('ID không tồn tại trong bảng sự kiện');
-                window.location='QL_PHANCONG.php';
-              </script>";
-        exit(); // Thêm exit để dừng mã khi gặp lỗi
+        $sql = "INSERT INTO phancong (idnhanvien, idtruc, id, trangthai, nguoiduyet, ngayduyet)
+                VALUES ('$idnhanvien', '$idtruc', '$id_sukien', '$trangthai', '$nguoiduyet', '$ngayduyet')";
     }
-} else {
-    // Thêm vào bảng phancong với id là null (nếu được phép)
-    $sql = "INSERT INTO phancong (idpc, idnhanvien, idtruc, id, trangthai, nguoitruccu, lydo, nguoiduyet, ngayduyet) 
-    VALUES ('$idpc', '$idnhanvien', '$idtruc', NULL, '$trangthai', '$nguoitruccu', '$lydo', '$nguoiduyet', '$ngayduyet')";
-}
 
-$kq = mysqli_query($conn, $sql);
+    if (mysqli_query($conn, $sql)) {
+        echo "Phân công thành công!";
+        // Chuyển hướng hoặc thông báo thành công
+        header('Location: QL_PHANCONG.php');
+    } else {
+        echo "Lỗi: " . $sql . "<br>" . mysqli_error($conn);
+    }
 
-if ($kq) {
-    echo "<script language=javascript>
-            alert('Thêm thành công');
-            window.location='QL_PHANCONG.php';
-          </script>";
-} else {
-    $error = mysqli_error($conn);
-    echo "<script language=javascript>
-            alert('Thêm thất bại: $error');
-            window.location='QL_PHANCONG.php';
-          </script>";
+    // Đóng kết nối
+    mysqli_close($conn);
 }
 ?>

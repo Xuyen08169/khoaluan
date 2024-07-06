@@ -9,6 +9,30 @@ if (session_status() == PHP_SESSION_NONE) {
 
 // Lấy idnhanvien từ session
 $idnhanvien_dangnhap = $_SESSION['idnhanvien'];
+
+// Truy vấn SQL để lấy thông tin cần thiết
+$sql = "
+SELECT 
+    phancong.idpc,
+    taikhoan.hoten AS nguoitrc,
+    lichtruc.ngaytruc,
+    IFNULL(sukien.tensukien, 'Không có sự kiện') AS tensukien,
+    phancong.trangthai,
+    phancong.nguoitruccu,
+    phancong.lydo,
+    phancong.nguoiduyet
+FROM 
+    phancong
+JOIN 
+    lichtruc ON phancong.idtruc = lichtruc.idtruc
+LEFT JOIN 
+    sukien ON phancong.id = sukien.id
+JOIN 
+    taikhoan ON phancong.idnhanvien = taikhoan.idnhanvien
+WHERE 
+    phancong.idnhanvien = $idnhanvien_dangnhap
+";
+$kq = mysqli_query($conn, $sql) or die("Không thể truy vấn: " . mysqli_error($conn));
 ?>
 
 <div class="row">
@@ -16,16 +40,9 @@ $idnhanvien_dangnhap = $_SESSION['idnhanvien'];
         <div class="card mb-4">
             <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                 <h6 class="m-0 font-weight-bold text-primary"
-                    style=" font-size: 25px; padding-left: 270px; padding-top:15px;">
-                    LỊCH TRỰC CÔNG TÁC TẠI ĐỀN THỜ</h6>
+                    style="font-size: 25px; padding-left: 270px; padding-top:15px;">
+                    LỊCH TRỰC CÁ NHÂN CÔNG TÁC TẠI ĐỀN THỜ</h6>
             </div>
-
-            <div style="padding-top: 15px; padding-left:15px;">
-                <a href="them_lich.php" style="padding-top: 15px;"><button type="button" class="btn btn-primary"> Thêm
-                        lịch </button> </a>
-            </div>
-
-
             <div class="table-responsive p-3">
                 <table class="table align-items-center table-flush" id="dataTable">
                     <thead class="thead-light">
@@ -33,8 +50,7 @@ $idnhanvien_dangnhap = $_SESSION['idnhanvien'];
                             <!-- <th>ID</th> -->
                             <th>Người trực</th>
                             <th>Ngày trực</th>
-                            <th> Sự kiện</th>
-
+                            <th>Sự kiện</th>
                             <th>Trạng thái</th>
                             <th>Người trực cũ</th>
                             <th>Lý do</th>
@@ -44,52 +60,23 @@ $idnhanvien_dangnhap = $_SESSION['idnhanvien'];
                     </thead>
                     <tbody>
                         <?php
-                        // Sử dụng idnhanvien từ session để lọc dữ liệu
-                        $sql = "SELECT * FROM phancong WHERE idnhanvien='$idnhanvien_dangnhap'";
-                        $kq = mysqli_query($conn, $sql) or die("Không thể xuất thông tin thiết bị " . mysqli_error($conn));
-                        while ($row = mysqli_fetch_array($kq)) {
-
-                            $idnhanviens = $row["idnhanvien"];
-                            $sql3 = "SELECT * FROM taikhoan WHERE idnhanvien='" . $idnhanviens . "'";
-                            $kq3 = mysqli_query($conn, $sql3) or die("Không thể xuất thông tin " . mysqli_error($conn));
-                            $taikhoan = mysqli_fetch_array($kq3);
-
-                            $idtrucs = $row["idtruc"];
-                            $sql3 = "SELECT * FROM lichtruc WHERE idtruc='" . $idtrucs . "'";
-                            $kq3 = mysqli_query($conn, $sql3) or die("Không thể xuất thông tin " . mysqli_error($conn));
-                            $lichtruc = mysqli_fetch_array($kq3);
-
-                            $ids = $row["id"];//////////nếu không có khóa ngoại thì ko cần dùng đến
-                            $sql5 = "SELECT * FROM sukien WHERE id='" . $ids . "'";
-                            $kq5 = mysqli_query($conn, $sql5) or die("Không thể xuất thông tin " . mysqli_error());
-                            $sukien = mysqli_fetch_array($kq5);
-
+                        while ($row = mysqli_fetch_assoc($kq)) {
                             echo "<tr>";
-                            // echo "<td>" . $row["idpc"] . "</td>";
-                            $usern = $row["idpc"]; // Gán dữ liệu cột username vào biến $usern
-
-                            echo "<td>" . $taikhoan["hoten"] . "</td>";
-                            echo "<td>" . date('d/m/Y', strtotime($lichtruc["ngaytruc"])) . "</td>";
-                          
-                            if ($sukien !== null && isset($sukien["tensukien"])) {
-                                echo "<td>" . $sukien["tensukien"] . "</td>";
+                            // echo "<td>" . $row['idpc'] . "</td>";
+                            echo "<td>" . $row['nguoitrc'] . "</td>";
+                            echo "<td>" . date('d/m/Y', strtotime($row['ngaytruc'])) . "</td>";
+                            echo "<td>" . $row['tensukien'] . "</td>";
+                            echo "<td>" . $row['trangthai'] . "</td>";
+                            echo "<td>" . $row['nguoitruccu'] . "</td>";
+                            echo "<td>" . $row['lydo'] . "</td>";
+                            echo "<td>" . $row['nguoiduyet'] . "</td>";
+                            echo "<td>";
+                            if (empty($row['lydo'])) {
+                                echo "<a href='sua_lichtruc_canhan.php?user=" . $row['idpc'] . "'><button style='border: none; background: #faebd700; color: #26355D;'><ion-icon name='sync-outline'></ion-icon></button></a>";
                             } else {
-                                echo "<td> Không có sự kiện nào hết </td>"; // Hoặc thông báo lỗi khác tùy ý của bạn
+                                echo ""; // Nếu có lý do thì không hiển thị nút chỉnh sửa
                             }
-                
-                
-                            echo "<td>" . $row["trangthai"] . "</td>";
-                            echo "<td>" . $row["nguoitruccu"] . "</td>";
-                            echo "<td>" . $row["lydo"] . "</td>";
-                            echo "<td>" . $row["nguoiduyet"] . "</td>";
-                          
-                            if (empty($row["lydo"])) {
-                                echo "<td style=' font-size: 20px;'>
-                                    <a href='sua_lichtruc_canhan.php?user=" . $row["id"] . "'><button style=' border: none;background: #faebd700; color: #26355D;'><ion-icon name='sync-outline'></ion-icon></button></a>
-                                </td>";
-                            } else {
-                                echo "<td></td>"; // Nếu có lý do thì không hiển thị nút chỉnh sửa
-                            }
+                            echo "</td>";
                             echo "</tr>";
                         }
                         ?>
@@ -100,8 +87,12 @@ $idnhanvien_dangnhap = $_SESSION['idnhanvien'];
     </div>
 </div>
 
-
 <?php include ("footer_nhanvien.php"); ?>
+
+
+
+
+
 
 <script>
     $(document).ready(function () {

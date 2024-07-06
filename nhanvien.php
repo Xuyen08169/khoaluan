@@ -1,7 +1,7 @@
 <?php
 include("header_nhanvien.php")
 ?>
-Trang Thông Tin Cá Nhân 
+Trang Thông Tin Nhân Viên
 <?php
 include("footer_nhanvien.php")
 ?>

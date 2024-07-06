@@ -1,5 +1,5 @@
-<?php include ("header.php"); 
-include("ketnoi.php");
+<?php include ("header.php");
+include ("ketnoi.php");
 ?>
 
 
@@ -14,11 +14,12 @@ include("ketnoi.php");
                     QUẢN LÝ CÁC BÀI TIN TỨC</h6>
             </div>
 
-          
 
-               
+
+
             <div style="padding-top: 15px; padding-left:15px;">
-            <a href="them_tintuc.php" style="padding-top: 15px;"><button type="button" class="btn btn-primary" > Thêm mới </button> </a>
+                <a href="them_tintuc.php" style="padding-top: 15px;"><button type="button" class="btn btn-primary"> Thêm
+                        mới </button> </a>
 
 
             </div>
@@ -45,43 +46,43 @@ include("ketnoi.php");
                         <?php
 
 
-function truncateString($string, $limit = 10) {
-    if (mb_strlen($string) > $limit) {
-        return mb_substr($string, 0, $limit) . '...';
-    } else {
-        return $string;
-    }
-}
+                        function truncateString($string, $limit = 10)
+                        {
+                            if (mb_strlen($string) > $limit) {
+                                return mb_substr($string, 0, $limit) . '...';
+                            } else {
+                                return $string;
+                            }
+                        }
 
-// Sử dụng trong mã HTML
+                        // Sử dụng trong mã HTML
+                        
 
 
-                    
-                    include("ketnoi.php");
-                    $sql="select * from tintuc";
-                    $kq=mysqli_query($conn,$sql) or die ("Không thể xuất thông tin thiết bị ".mysqli_error());
-                    while($row=mysqli_fetch_array($kq))
-                    {
+                        include ("ketnoi.php");
+                        $sql = "select * from tintuc";
+                        $kq = mysqli_query($conn, $sql) or die("Không thể xuất thông tin thiết bị " . mysqli_error());
+                        while ($row = mysqli_fetch_array($kq)) {
 
-                        $taikhoans = $row["idnhanvien"];//////////nếu không có khóa ngoại thì ko cần dùng đến
-                        $sql3 = "SELECT * FROM taikhoan WHERE idnhanvien='" . $taikhoans . "'";
-                        $kq3 = mysqli_query($conn, $sql3) or die("Không thể xuất thông tin " . mysqli_error());
-                        $taikhoan = mysqli_fetch_array($kq3);
+                            $taikhoans = $row["idnhanvien"];//////////nếu không có khóa ngoại thì ko cần dùng đến
+                            $sql3 = "SELECT * FROM taikhoan WHERE idnhanvien='" . $taikhoans . "'";
+                            $kq3 = mysqli_query($conn, $sql3) or die("Không thể xuất thông tin " . mysqli_error());
+                            $taikhoan = mysqli_fetch_array($kq3);
 
-            echo "<tr>";
-            // echo "<td>" . $row["idtintuc"] . "</td>";
-            $usern = $row["idtintuc"]; // Gán dữ liệu cột username vào biến $usern
-            
-            echo "<td>" . $row["tieude"] . "</td>";
-          
-            echo "<td>" . htmlspecialchars(truncateString($row["noidung"])) . "</td>";
-            echo "<td>" . date('d/m/Y', strtotime($row["ngaydang"])) . "</td>";
+                            echo "<tr>";
+                            // echo "<td>" . $row["idtintuc"] . "</td>";
+                            $usern = $row["idtintuc"]; // Gán dữ liệu cột username vào biến $usern
+                        
+                            echo "<td>" . $row["tieude"] . "</td>";
 
-            echo "<td> " . $taikhoan["hoten"] . "</td>";
-            echo "<td>" . $row["noibat"] . "</td>";
-          
-        
-            echo "<td  style=' font-size: 20px;'>
+                            echo "<td>" . htmlspecialchars(truncateString($row["noidung"]), ENT_QUOTES, 'UTF-8') . "</td>";
+
+                            echo "<td>" . date('d/m/Y', strtotime($row["ngaydang"])) . "</td>";
+
+                            echo "<td> " . $taikhoan["hoten"] . "</td>";
+                            echo "<td>" . $row["noibat"] . "</td>";
+
+                            echo "<td class='nut' style=' font-size: 20px;'>
             <a href='#' class='view-details' data-id='$usern'><button style=' border: none;background: #faebd700; color: #26355D;'><ion-icon name='eye-outline'></ion-icon></button></a>
             <a href='sua_tintuc.php?user=$usern'><button style=' border: none;background: #faebd700; color: #26355D'><ion-icon name='pencil'></ion-icon></button></a>
             <a href='xoa_tintuc.php?user=$usern'><button style=' border: none;background: #faebd700; color: #26355D'><ion-icon name='trash'></button></ion-icon></a>
@@ -89,9 +90,9 @@ function truncateString($string, $limit = 10) {
                    
                     
                 </td>";
-            echo "</tr>";
-        }
-        ?>
+                            echo "</tr>";
+                        }
+                        ?>
                     </tbody>
                 </table>
             </div>
@@ -103,7 +104,8 @@ function truncateString($string, $limit = 10) {
 <!-- Modal -->
 
 
-<div class="modal fade" id="eventDetailModal" tabindex="-1" role="dialog" aria-labelledby="eventDetailModalLabel" aria-hidden="true">
+<div class="modal fade" id="eventDetailModal" tabindex="-1" role="dialog" aria-labelledby="eventDetailModalLabel"
+    aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
